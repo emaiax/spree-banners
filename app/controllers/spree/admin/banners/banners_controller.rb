@@ -1,7 +1,11 @@
 module Spree
   module Admin
-    class BannersController < ResourceController
+    class Admin::BannersController < ResourceController
       before_filter :load_data
+
+      def model_class
+        Banner
+      end
 
       def update_positions
         params[:positions].each do |id, index|
