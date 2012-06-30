@@ -1,13 +1,8 @@
 source 'http://rubygems.org'
 
-group :test do
-  gem 'ffaker'
-end
+gem 'sqlite3'
 
-if RUBY_VERSION < "1.9"
-  gem "ruby-debug"
-else
-  gem "ruby-debug19"
-end
+gem 'spree', :git => 'git://github.com/spree/spree.git', :branch => '1-0-stable'
+gem "paperclip", ">= 2.5.0"
 
 gemspec
