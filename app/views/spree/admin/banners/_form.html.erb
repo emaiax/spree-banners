@@ -14,4 +14,6 @@
 <%= f.check_box :enabled %>
 <br />
 <%= f.label :attachment, t("banner.image") %>
-<%= f.file_field :attachment, :html => {:hint => f.object.attachment.blank? ? f.content_tag(:span, t("banner.no_image")) : image_tag(f.object.attachment.url(:thumbnail))} %>
+<%= f.file_field :attachment %>
+<br />
+<%= f.object.attachment.blank? ? f.content_tag(:span, t("banner.no_image")) : image_tag(f.object.attachment.url(:thumbnail)) %>
