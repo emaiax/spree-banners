@@ -4,8 +4,6 @@ module Spree
     def insert_banner(params={})
       # max items show for list
       max = params[:max] || 1
-      # category items show
-      category = params[:category] || ""
       # class items show
       cl = params[:class] || "banner"
       # style items show
