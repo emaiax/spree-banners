@@ -1,7 +1,7 @@
 module Spree
   class Banner < ActiveRecord::Base
 
-    POSITIONS = {"1" => "Top", "2" => "Right", "3" => "Bottom", "4" => "Left"}
+    POSITIONS = {:top => 1, :right => 2, :bottom => 3, :left => 4}
 
     validates_presence_of :title, :attachment_width, :attachment_height
     validates_attachment_presence :attachment

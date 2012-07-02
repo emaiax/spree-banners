@@ -26,7 +26,7 @@
           <%= banner.title %>
         </td>
         <td><%= banner.url %></td>
-        <td><%= Spree::Banner::POSITIONS[banner.position.to_s] %></td>
+        <td><%= Spree::Banner::POSITIONS.key(banner.position).to_s.capitalize %></td>
         <td><%= icon('tick') if banner.enabled %></td>
         <td><%= "#{banner.attachment_width} x #{banner.attachment_height}" %></td>
         <td>
