@@ -2,7 +2,7 @@
 <%= f.text_field :title %>
 <br />
 <%= f.label :position, t("banner.position") %>
-<%= f.select :position, options_for_select([["Top", 1], ["Right", 2], ["Bottom", 3], ["Left", 4]]) %>
+<%= f.select :position, options_for_select(Spree::Banner::POSITIONS.collect {|x| [x.last, x.first]}) %>
 <br />
 <%= f.label :attachment_width, t("banner.attachment_width") %>
 <%= f.text_field :attachment_width, :required => true %>
