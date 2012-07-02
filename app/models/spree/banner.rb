@@ -23,9 +23,7 @@ module Spree
     after_post_process :find_dimensions
 
     scope :enabled, where(:enabled => true)
-    scope :by_position, lambda {|position|
-      where(:enabled => true, :position => position)
-    }
+    scope :by_position, lambda {|position| where(:enabled => true, :position => position) }
 
     def initialize(*args)
       super(*args)
