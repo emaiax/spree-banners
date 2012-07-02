@@ -9,11 +9,14 @@ module Spree
       # style items show
       style = params[:style] || "list"
 
-      banner = Banner.enabled.limit(max)
-      unless banner.blank?
+      if params[:position].blank?
+        banner = Banner.enabled.shuffle.first(max)
+      else
         # random order
-        banner = banner.sort_by{rand}
+        banner = Banner.by_position(Banner::POSITIONS[params[:position]]).shuffle.first(max)
+      end
 
+      unless banner.blank?
         if (style == "list")
           content_tag(:ul, raw(banner.map do |ban| content_tag(:li, link_to(image_tag(ban.attachment.url(image_size.to_sym)), ban.url), :class => cl) end.join) )
         else
