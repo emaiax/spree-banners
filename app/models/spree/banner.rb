@@ -1,12 +1,18 @@
 module Spree
   class Banner < ActiveRecord::Base
+
+    POSITIONS = {"1" => "Top", "2" => "Right", "3" => "Bottom", "4" => "Left"}
+
     validates_presence_of :title, :attachment_width, :attachment_height
     validates_attachment_presence :attachment
     validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "must be JPG, JPEG or PNG"
 
+
+    attr_accessible :title, :position, :attachment_width, :attachment_height, :enabled, :attachment
+
     has_attached_file :attachment,
-      :url  => "/spree/banner/:id/:style_:basename.:extension",
-      :path => ":rails_root/public/spree/banner/:id/:style_:basename.:extension",
+      :url  => "/spree/banners/:id/:style_:basename.:extension",
+      :path => ":rails_root/public/spree/banners/:id/:style_:basename.:extension",
       :styles => {
       :thumbnail => "80x80#",
       :custom => Proc.new { |instance| "#{instance.attachment_width}x#{instance.attachment_height}#" }
