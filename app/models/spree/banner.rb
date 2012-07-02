@@ -8,7 +8,7 @@ module Spree
     validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "must be JPG, JPEG or PNG"
 
 
-    attr_accessible :title, :position, :attachment_width, :attachment_height, :enabled, :attachment
+    attr_accessible :title, :url, :position, :attachment_width, :attachment_height, :enabled, :attachment
 
     has_attached_file :attachment,
       :url  => "/spree/banners/:id/:style_:basename.:extension",
@@ -22,7 +22,10 @@ module Spree
     }
     after_post_process :find_dimensions
 
-    scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
+    scope :enabled, where(:enabled => true)
+    scope :by_position, lambda {|position|
+      where(:enabled => true, :position => position)
+    }
 
     def initialize(*args)
       super(*args)
