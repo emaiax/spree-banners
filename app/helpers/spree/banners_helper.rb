@@ -2,18 +2,24 @@ module Spree
   module BannersHelper
 
     def insert_banner(params={})
-      # max items show for list
-      max = params[:max] || 1
       # class items show
       cl = params[:class] || "banner"
+
       # style items show
       style = params[:style] || "list"
 
       if params[:position].blank?
-        banner = Banner.enabled.shuffle.first(max)
+        if params[:max].blank?
+          banner = Banner.enabled.shuffle
+        else
+          banner = Banner.enabled.shuffle.first(params[:max])
+        end
       else
-        # random order
-        banner = Banner.by_position(Banner::POSITIONS[params[:position]]).shuffle.first(max)
+        if params[:max].blank?
+          banner = Banner.by_position(Banner::POSITIONS[params[:position]]).shuffle
+        else
+          banner = Banner.by_position(Banner::POSITIONS[params[:position]]).shuffle.first(params[:max])
+        end
       end
 
       unless banner.blank?
