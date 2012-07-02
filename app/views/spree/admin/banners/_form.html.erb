@@ -1,6 +1,9 @@
 <%= f.label :title, t("banner.title") %>
 <%= f.text_field :title %>
 <br />
+<%= f.label :url, t("banner.url") %>
+<%= f.text_field :url %>
+<br />
 <%= f.label :position, t("banner.position") %>
 <%= f.select :position, options_for_select(Spree::Banner::POSITIONS.collect {|x| [x.last, x.first]}) %>
 <br />
