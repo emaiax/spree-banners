@@ -7,6 +7,7 @@ module Spree
     validates_attachment_presence :attachment
     validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "must be JPG, JPEG or PNG"
 
+    has_and_belongs_to_many :taxons, :join_table => 'spree_banners_taxons'
 
     attr_accessible :title, :url, :position, :attachment_width, :attachment_height, :enabled, :attachment
 

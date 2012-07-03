@@ -20,3 +20,10 @@
 <%= f.file_field :attachment %>
 <br />
 <%= f.object.attachment.blank? ? f.content_tag(:span, t("banner.no_image")) : image_tag(f.object.attachment.url(:thumbnail)) %>
+
+<br />
+<h1><%= t("taxons") %></h1>
+
+<div id="selected-taxons" data-hook>
+  <%= render :partial => 'selected', :locals => { :banner => f.object, :taxons => f.object.taxons } %>
+</div>

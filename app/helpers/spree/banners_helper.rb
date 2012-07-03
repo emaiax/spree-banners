@@ -1,6 +1,10 @@
 module Spree
   module BannersHelper
 
+    def taxon_path(taxon)
+      taxon.ancestors.reverse.collect { |ancestor| ancestor.name }.join( " >> ")
+    end
+
     def insert_banner(params={})
       # class items show
       cl = params[:class] || "banner"
