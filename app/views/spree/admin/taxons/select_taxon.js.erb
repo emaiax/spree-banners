@@ -1,2 +1,2 @@
-$("#selected-taxons").html("<%= escape_javascript(render(:partial => 'taxon_table', :locals => { :taxons => @taxons })) %>");
+$("#selected-taxons").html("<%= escape_javascript(render(:partial => 'spree/admin/banners/taxon_table', :locals => { :banner => @banner, :taxons => @taxons })) %>");
 $("#<%= dom_id @taxon, :sel %>").hide();
